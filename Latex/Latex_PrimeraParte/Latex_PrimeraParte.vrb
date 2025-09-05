@@ -1,0 +1,26 @@
+\frametitle{Caracteres especiales/reservados}
+
+Los siguientes caracteres están reservados en \LaTeX. Todos van precedidos de la diagonal invertida \verb|\| para hacer uso de ellos en un texto, por ejemplo 5\%, 50\$, \{ texto \}.
+
+    \begin{columns}
+        \begin{column}{.5\linewidth}
+    \begin{itemize}
+\item \$: Permite incluir entorno matemático en el texto.
+\item \%: Para comentarios.
+\item \^{}: Acento circunflejo. Se usa como exponente en las ecuaciones.
+\item \_: Guión bajo. Funciona como subíndice.
+\item \&: Para separar columnas en tablas y matrices (arreglos).
+
+
+\end{itemize}
+\end{column}
+
+\begin{column}{.5\linewidth}
+    \begin{itemize}
+        \item \{ \}: Llaves. Se usan para llamar a un paquete y otras opciones de formato de línea.
+        \item \textbackslash: \hspace{0.5mm} Para iniciar comandos y entornos.
+        \item $<$ $>$: Para mostrar cierto contenido en beamer (diapositivas) ó en el índice.
+        \item $[$ $]$: Se usan en opciones del documento y de los paquetes.
+    \end{itemize}
+\end{column}
+\end{columns}

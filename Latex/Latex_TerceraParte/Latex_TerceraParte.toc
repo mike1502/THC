@@ -1,0 +1,9 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Ecuaciones}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Alineación de ecuaciones}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{El modo matemático en Latex}{5}{0}{1}
+\beamer@subsectionintoc {1}{3}{Espacios, símbolos y operaciones}{7}{0}{1}
+\beamer@subsectionintoc {1}{4}{Entornos}{11}{0}{1}
+\beamer@subsectionintoc {1}{5}{Entornos para teoremas y demostraciones.}{16}{0}{1}
+\beamer@subsubsectionintoc {1}{5}{1}{Pero antes... tcolorbox}{18}{0}{1}
+\beamer@sectionintoc {2}{Código Python en \LaTeX }{20}{0}{2}

@@ -1,0 +1,18 @@
+\frametitle{Imagen de fondo}
+\begin{alertblock}{Imagen de fondo}
+    Para añadir la imagen de fondo, se debe introducir el siguiente comando:
+        \begin{itemize}
+            \item \verb|\setbeamertemplate{background}|
+
+            \verb|{|
+
+            \verb|{\transparent{valor}\includegraphics|
+
+            \verb|[width=1.0\paperwidth,height=1.0\paperheight]{ruta_imagen}|
+
+            \verb|}|
+
+            \item El valor máximo de width y height es 1. Inmediatamente después se añade el comando paperwidth o paperheight, respectivamente, para ajustar la imagen a la diapositiva.
+        \end{itemize}
+    \end{alertblock}
+

@@ -1,0 +1,378 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{animate}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{ragged2e}
+\usepackage[spanish]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{xcolor}
+
+
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true, 
+linkcolor=magenta, 
+urlcolor=orange, 
+citecolor=orange}
+
+\urlstyle{same}
+\usepackage[all]{xy}
+
+\usetheme{Warsaw} % Warsaw, Bergen, Madrid, CambridgeUS, Berlin, Antibes 
+\usecolortheme{seahorse} %albatross, beaver, crane, wolverine, seahorse
+\title[\hspace{25mm} \insertframenumber/\inserttotalframenumber]{\bf Presentaciones con beamer}
+%\subtitle{Clase 1}
+%\author[Miguel Ángel Carrillo Lucía]{Ing. Miguel~Ángel~Carrillo~Lucía\inst{1,2}}
+
+\author[Taller de Herramientas Computacionales - 2024-1] % (optional, for multiple authors)
+{\hspace{2.70mm} \large{Miguel Ángel Carrillo Lucía} } %\inst{2}}
+
+%% Institución
+\institute[] % no es necesario llenar la opción
+{
+    %\inst{1}
+    %Facultad de Ciencias\\
+    Universidad Nacional Autónoma de México\\
+    Facultad de Ciencias\\
+    Departamento de Matemáticas\\
+    Lic. en Matemáticas Aplicadas
+}
+%\institute{Ciudad de México}
+\date{15 de agosto de 2025}
+
+\usepackage{transparent}
+\usepackage{eso-pic}
+
+%\setbeamertemplate{background}{
+
+%{\transparent{0.075}\includegraphics[width=1.0\paperwidth,height=1.0\paperheight]{escudos/matematicas_aplicadas.jpg}}
+%}
+
+
+\setbeamertemplate{background}{
+  \rule{0pt}
+  {.90\paperheight}%
+  %{0.90}\paperheight
+  \hspace*{.5\paperwidth}%
+  \paperwidth1.50mm
+  \makebox[1pt][c]{\transparent{0.120}\includegraphics[scale=0.56]{imagenes/logos_unam_ciencias.png} }
+}
+
+\begin{document}
+
+%\maketitle
+
+\begin{frame}
+    \titlepage
+    %\vspace{-50pt}
+    %\begin{figure}[htpb]
+    %    \begin{center}
+    %        \includegraphics[width=0.145\linewidth]{escudos/escudo_ciencias_unam.png} \hspace{95mm}
+    %        \includegraphics[width=0.145\linewidth]{escudos/escudo_unam.png}
+    %    \end{center}
+    %\end{figure}
+\end{frame}
+
+%\section{Agenda}
+\begin{frame}{Agenda}
+     \tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+
+
+\section{La clase beamer}
+\begin{frame}[fragile]{La clase beamer}
+ \justifying
+            \begin{block}{La clase beamer}
+            \begin{itemize} \pause
+            \justifying
+                \item \verb|\documentclass[op1, op2]{beamer}|. Documento o clase de Latex diseñada para crear presentaciones de diapositivas profesionales. Se pueden crear múltiples diapositivas con su propio contenido (texto, imágenes, tablas, columnas, ecuaciones matemáticas, etc.). \pause
+                \item Existe una gran variedad de temas y esquemas de colores predefinidos para personalizar las diapositivas. \pause
+                \item La organización de la presentación se hace con secciones y subsecciones. \pause 
+                \item Tiene formatos predefinidos para dar color a las diapositivas. \pause
+                \item Se puede agregar título a la presentación, un subtítulo, añadir varios autores, incluir la fecha y logos de la institución o escuela.
+            \end{itemize}
+            \end{block} 
+
+\end{frame}
+
+
+\section{Preparar diapositiva}
+\begin{frame}[fragile]{Preparar diapositiva} 
+\begin{block}{Inicio} \pause
+    \begin{enumerate}
+        \item Abrir nuevo proyecto. Cambiar la opción documentclass a beamer \verb|\documentclass{beamer}|. \pause 
+        \item Modificar título y añadir subtítulos. Cambiar la fuente del texto y el tamaño de letra. \pause
+        \item Añadir autores con el comando \verb|\author{}|. Si son muchos, separar por comas (quedan de forma horizontal) o con salto de línea (\verb|\\|), para desplegarlos de forma vertical. Por último, modificar la fecha. 
+    \end{enumerate}
+\end{block}    
+\end{frame}
+
+\section{Añadir información de los ponentes}
+\subsection{Añadir instituto y autores} \pause
+\begin{frame}[fragile]{Preparar diapositiva}
+\begin{block}{Añadir universidad, facultad, instituto} \pause
+
+\verb|\institute[]| \pause % no es necesario llenar la opción \pause
+
+\verb|{| \pause
+
+    \verb|\inst{1}| \pause
+    
+    Facultad de Ciencias\\ \pause
+    Universidad Nacional Autónoma de México \pause
+    \\ 
+    \verb|\and|
+
+    \verb|\inst{2}| \pause
+    
+    Instituto de Ingeniería\\ \pause
+    Universidad Nacional Autónoma de México \pause
+
+\verb|}| 
+
+\end{block}
+\begin{alertblock}{Autores} \pause
+    Se añade al autor \verb|\author{Miguel\inst{1,2}}|. 
+\end{alertblock}
+\end{frame}
+
+\section{El entorno frame (diapositiva)}        
+\begin{frame}[fragile]{Entorno frame (diapositiva)}
+    \begin{block}{Iniciar diapositiva} \pause
+        \begin{itemize} \pause
+            \item Añadir frame/diapositiva con \verb|\begin{frame}[opciones]{Nombre}|. Añadir cuatro diapositivas más. \pause
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Título de la presentación} \pause
+        \verb|\begin{frame}[plain]| \pause
+        
+        \verb|\begin{center}| \pause
+        
+            \verb|\includegraphics[opciones]{ruta}| \pause
+        
+        \verb|\end{center}| \pause
+        
+        \verb|\titlepage| 
+        
+    \end{block}
+
+    \begin{block}{Secciones} \pause
+        Añadir secciones o subsecciones antes de cada frame/diapositiva. Serán útiles para cuando se defina el índice.
+    \end{block}
+    
+\end{frame}
+
+\subsection{Opciones de beamer}
+\begin{frame}[fragile]{Opciones de beamer}
+\begin{block}{Opciones de beamer} \pause
+    \begin{itemize}
+        \item Tamaño de letra (10 pt, 11pt, 12pt). \pause
+        \item Relación de aspecto (aspectratio). Puede tomar los siguientes valores. \pause
+        \begin{itemize}
+            \item 169 $ \to $ 16:9. Modo panorámico. \pause
+            \item 1610 $ \to $ 16:10 \pause
+            \item 149 $\to $ 14:9 \pause
+            \item 54 $\to$ 5:4 \pause
+            \item 43 $\to $ 4:3. Estándar. \pause
+            \item 32 $ \to $ 3:2
+        \end{itemize} \pause
+        \item \verb|\documentclass[aspectratio=169, 12pt]{beamer}|
+    \end{itemize}
+\end{block}
+    
+\end{frame}
+
+\subsection{Definición del índice}
+\begin{frame}[fragile]{Índice} 
+    \begin{block}{Generar índice} \pause
+        \verb|{| \pause
+        
+        \verb|\begin{frame}[t]| \pause
+        
+        \verb|\frametitle{índice general}| \pause
+        
+            \verb|\tableofcontents[currentsubsection]| \pause
+        
+        \verb|\end{frame}|    \pause
+        
+        \verb|}| 
+        
+    \end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Mostrar índice cada cambio de sección o subsección}
+    \begin{exampleblock}{Para secciones} \pause
+    \verb|\AtBeginSection[ ]| \pause
+    
+        \verb|{|  \pause
+        
+        \verb|\begin{frame}<beamer>[allowframebreaks]| \pause
+
+            \verb|\frametitle{Índice general}| \pause
+
+        
+                \verb|\tableofcontents[currentsection]| \pause
+        
+        \verb|\end{frame}| \pause
+                
+        \verb|}|
+    \end{exampleblock}
+    
+\end{frame}
+
+
+\begin{frame}[fragile]{Mostrar índice cada cambio de sección o subsección}
+    \begin{exampleblock}{Para subsecciones} \pause
+\verb|\AtBeginSubsection[ ]| \pause
+    
+        \verb|{| \pause
+        
+        \verb|\begin{frame}<beamer>[allowframebreaks]| \pause
+
+            \verb|\frametitle{Índice general}| \pause
+
+        
+                \verb|\tableofcontents[currentsubsection]| \pause
+        
+        \verb|\end{frame}| \pause
+                
+        \verb|}| 
+    \end{exampleblock}
+    
+\end{frame}
+
+\section{Temas y colores}
+\begin{frame}[fragile]{Temas y colores}
+    \begin{block}{Temas y colores} \pause
+        \begin{itemize}
+            \item \verb|\usetheme{}|. Es el tema visual que se va a aplicar a las diapositivas. Están predefinidos en Latex en cuanto a diseño, colores, fuentes. Modifica el color de fondo, colores para el texto, diseño de encabezados y pie de página. \pause
+            \item \verb|\usecolortheme{}|. Se utiliza para seleccionar el esquema de colores que se van a aplicar a las diapositivas. Ambos comandos vienen predefinidos en beamer. 
+        \end{itemize}
+        
+    \end{block}
+\end{frame}
+
+\begin{frame}{Variedad de temas y colores}
+	\begin{exampleblock}{Temas y colores}
+		\url{https://deic.uab.cat/~iblanes/beamer_gallery/}
+	\end{exampleblock}
+\end{frame}
+
+\section{Bloques y pausas}
+\subsection{Bloques}
+\begin{frame}[fragile]{Bloques y pausas} 
+    \begin{alertblock}{Bloques y pausas} \pause
+        \begin{itemize}
+            \item Los bloques permiten añadir contenido (texto, listas, e incluso figuras) para resaltar la información que se presenta. Existen tres bloques básicos: \pause
+            \begin{itemize}
+                \item \verb|\begin{block}{Título}|. El color del bloque es muy suave. Suele ser de color azul* . Va a depender del tema a utilizar. Útil para presentar información que no es tan esencial. \pause
+                \item \verb|\begin{exampleblock}{Título}|. El color del bloque suele ser verde* y se utiliza para mostrar ejemplos o casos de estudio específicos. \pause 
+                \item \verb|\begin{alertblock}{Título}|. El bloque normalmente aparece en color rojo o un color fuerte. Se utiliza para presentar información importante, urgente o para llamar la atención de la audiencia.
+            \end{itemize}
+            
+        \end{itemize}
+        
+    \end{alertblock}
+\end{frame}
+
+
+\begin{frame}{Bloques}
+    \begin{block}{Bloque básico} \pause
+        Contenido.
+    \end{block}
+
+    \begin{exampleblock}{Bloque para ejemplos} \pause
+        Contenido.
+    \end{exampleblock}
+
+    \begin{alertblock}{Bloque de alerta} \pause
+        Contenido.
+    \end{alertblock}
+\end{frame}
+
+\subsection{Pausas}
+\begin{frame}[fragile]{Pausas}
+\begin{exampleblock}{Pausas} \pause
+        \begin{itemize}
+            \item El comando \verb|\pause| se utiliza para dividir una diapositiva en partes que se mostrarán en diferentes momentos de la presentación. \pause
+            \item Va mostrando paso a paso (\textit{overlays}) el contenido de la diapositiva. Genera una nueva diapositiva por cada vez que se utilice. \pause
+            \item Es muy útil para ir presentando de forma gradual el contenido de la exposición. \pause
+        \end{itemize}
+
+\end{exampleblock}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Ejemplo con pause}
+    \begin{block}{Ejemplo con pause}
+        \begin{itemize}
+            \item Este es \pause
+            \item un ejemplo \pause
+            \item de cómo \pause
+            \item se utiliza \pause
+            \item el comando \pause
+            \item \verb|\pause| 
+        \end{itemize}
+        
+    \end{block}
+    
+\end{frame}
+
+
+\begin{frame}[fragile]{Imagen de fondo y transparencia}
+    \begin{exampleblock}{Transparencia}
+        \begin{itemize}
+            \item Para habilitar la opción de agregar una imagen (o texto) de fondo, se añade en el preámbulo el paquete \verb|\usepackage{transparent}|. 
+            \item En el caso del texto, se puede utilizar el comando \verb|\transparent{N}|, donde N toma valores de 0 (opaco) a 1 (transparente).
+            \item Ejemplo 
+            \begin{itemize}
+                \item \verb|\transparent{1}|: \transparent{1} El valor de transparent es 1 .
+                \item \verb|\transparent{0.5}|: \transparent{0.5} El valor de transparent es 0.5 .
+                \item \verb|\transparent{0.1}|: \transparent{0.1} El valor de transparent es 0.1 .
+            \end{itemize}
+        \end{itemize}
+        
+    \end{exampleblock}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Imagen de fondo}
+    \begin{alertblock}{Imagen de fondo}
+    Para añadir la imagen de fondo, se debe introducir el siguiente comando:
+        \begin{itemize}
+            \item \verb|\setbeamertemplate{background}|
+            
+            \verb|{|
+            
+            \verb|{\transparent{valor}\includegraphics|
+            
+            \verb|[width=1.0\paperwidth,height=1.0\paperheight]{ruta_imagen}|
+            
+            \verb|}|
+
+            \item El valor máximo de width y height es 1. Inmediatamente después se añade el comando paperwidth o paperheight, respectivamente, para ajustar la imagen a la diapositiva.
+        \end{itemize}
+    \end{alertblock}
+    
+\end{frame}
+
+\end{document}
+
+

@@ -1,0 +1,12 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{La clase beamer}{3}{0}{1}
+\beamer@sectionintoc {2}{Preparar diapositiva}{9}{0}{2}
+\beamer@sectionintoc {3}{Añadir información de los ponentes}{13}{0}{3}
+\beamer@subsectionintoc {3}{1}{Añadir instituto y autores}{13}{0}{3}
+\beamer@sectionintoc {4}{El entorno frame (diapositiva)}{24}{0}{4}
+\beamer@subsectionintoc {4}{1}{Opciones de beamer}{34}{0}{4}
+\beamer@subsectionintoc {4}{2}{Definición del índice}{44}{0}{4}
+\beamer@sectionintoc {5}{Temas y colores}{67}{0}{5}
+\beamer@sectionintoc {6}{Bloques y pausas}{71}{0}{6}
+\beamer@subsectionintoc {6}{1}{Bloques}{71}{0}{6}
+\beamer@subsectionintoc {6}{2}{Pausas}{80}{0}{6}

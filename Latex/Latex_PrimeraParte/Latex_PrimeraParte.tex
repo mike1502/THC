@@ -1,0 +1,1070 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{animate}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{ragged2e}
+
+
+\usepackage{transparent}
+
+%\usepackage[latin1]{inputenc}
+\usepackage[normalem]{ulem}
+\usepackage{pifont}
+\usepackage{parskip}
+
+\usepackage[all]{xy}
+
+\usetheme{Warsaw} % Warsaw, Bergen, Madrid, CambridgeUS, Berlin, Antibes 
+\usecolortheme{seahorse} %albatross, beaver, crane, wolverine, seahorse
+\title[\hspace{25mm} \insertframenumber/\inserttotalframenumber]{\bf \Large{Introducción a Latex}}
+\subtitle{Clase 1}
+%\author[Miguel Ángel Carrillo Lucía]{Ing. Miguel~Ángel~Carrillo~Lucía\inst{1,2}}
+
+\author[Taller de Herramientas Computacionales - 2024-1] % (optional, for multiple authors)
+{\hspace{2.70mm} \Large{Miguel Ángel Carrillo Lucía }  \and \Large{Leonard David Solís Rodríguez}} %\inst{1}}
+
+%% Institución
+\institute[] % no es necesario llenar la opción
+{	{\large Universidad Nacional Autónoma de Mexico}\\
+    {\large Facultad de Ciencias}\\
+    {\large Departamento de Matemáticas}\\
+    {\large Licenciatura en Matematicas Aplicadas}
+}
+%\institute{Ciudad de México}
+\date{14 de agosto de 2025}
+
+\usepackage{transparent}
+\usepackage{eso-pic}
+
+%\setbeamertemplate{background}{
+
+%{\transparent{0.075}\includegraphics[width=1.0\paperwidth,height=1.0\paperheight]{escudos/matematicas_aplicadas.jpg}}
+%}
+
+
+\setbeamertemplate{background}{
+  \rule{0pt}
+  {.90\paperheight}%
+  %{0.90}\paperheight
+  \hspace*{.5\paperwidth}%
+  \paperwidth1.50mm
+  \makebox[1pt][c]{\transparent{0.120}\includegraphics[scale=0.56]{logos_unam_ciencias.png}}
+}
+
+%\setbeamertemplate{background}{
+%  \hspace*{.5\paperwidth}%
+%  \makebox[1pt][c]{%
+%    {\transparent{0.2}\includegraphics[scale=0.56]{logos_unam_ciencias.png}}%
+%  }%
+%}
+
+
+\setlength{\columnseprule}{1.5pt}
+\def\columnseprulecolor{\color{blue}}
+
+\begin{document}
+
+%\maketitle
+
+\begin{frame}
+    \titlepage
+    %\vspace{-50pt}
+    %\begin{figure}[htpb]
+    %    \begin{center}
+    %        \includegraphics[width=0.145\linewidth]{escudos/escudo_ciencias_unam.png} \hspace{95mm}
+    %        \includegraphics[width=0.145\linewidth]{escudos/escudo_unam.png}
+    %    \end{center}
+    %\end{figure}
+\end{frame}
+
+%\section{Agenda}
+
+%\section{Agenda}
+\begin{frame}{Agenda}
+     \tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+
+%%% breve historia de latex
+
+\begin{frame}{Breve historia de Latex}
+\begin{columns}
+    \begin{column}{.28\linewidth}
+        %\begin{exampleblock}{}
+        \begin{itemize}
+        \justifying
+        \begin{figure}
+                \centering
+                \includegraphics[scale=0.20]{Knuth_donald.jpg} 
+               \hspace{-8mm} \caption*{Donald Knuth.}
+                \label{}
+        \end{figure}    
+            %\item TEX: creado por Donald Knuth (1970) como un programa para procesar textos con enfoque al contenido y no a la forma. Define la estructura y tipografía para cada tipo de documento. Es un lenguaje de bajo nivel.
+    \end{itemize}
+        %\end{exampleblock}
+    \end{column}
+
+    \begin{column}{.28\linewidth}
+        %\begin{exampleblock}{}
+            \begin{itemize}
+            \justifying
+            \begin{figure}
+                \centering
+                \includegraphics[scale=0.32]{LeslieLamport.jpg} 
+                \hspace{-8mm} \caption*{Leslie Lamport.}
+                \label{}
+            \end{figure}    
+                
+                %\item En el año 1983 Leslie Lamport en 1983 desarrolla el sistema \LaTeX para facilitar al usuario generar un proyecto (sin preocuparse por la tipografía, márgenes, distribución de texto) mediante una serie de macros. Más fácil de usar.
+            \end{itemize}
+        %\end{exampleblock}   
+    \end{column}
+\end{columns}
+
+\vspace{-5mm} \pause
+        \begin{alertblock}{¿Qué es un macro?}
+            \begin{itemize}
+            \justifying
+                \item Un macro es un código fuente muy grande para conseguir que el texto generado tenga alguna característica deseada.
+            \end{itemize}
+        \end{alertblock}
+    
+\end{frame}
+
+\section{¿Qué es \LaTeX}
+
+\begin{frame}{¿Qué es \LaTeX ?}
+    \begin{itemize}
+    \justifying
+        \item Un sistema de composición de textos que permite obtener fácilmente resultados de calidad profesional. Está orientado al ámbito científico. Permite generar documentos profesionales con alta calidad tipográfica.
+        \item Es un lenguaje de programación orientado a generar textos. 
+        %\item No solo es procesador de textos sino un lenguaje de programación orientado a su generación.
+        \item Está compuesto por un conjunto de Macros  que incorporan una serie de estilos de documentos (libros, artículos, presentaciones, etc.) con características de generación automática.%(programas, bloques de código, que definen instrucciones complejas a partir de otras más simples)
+        \item En 1991 se resuelven los problemas de portabilidad, código ASCII (longitud de palabra limitada), UTF-8 (de Unicode Transformation Format) e idiomas. Actualmente, la paquetería UTF-8 ya no se incluye.
+        %\item lenguaje que nos permite preparar automáticamente un documento de apariencia estándar y de alta calidad.
+    \end{itemize}
+
+\end{frame}
+
+\subsection{Entonces ¿Qué es y qué no es \LaTeX?}
+\begin{frame}{Entonces ¿Qué es y qué no es \LaTeX?}
+    \begin{itemize}
+    \justifying
+        \item No es un procesador de textos.
+        \item Permite preparar textos que no se editan de manera habitual (viendo el producto), sino que se programan atendiendo más bien a la organización lógica de las ideas.
+        \item No es un sistema WYSIWYG (What You See Is What You Get). Lo que ves es lo que hay, o lo que obtienes. ¿Qué significa? 
+        \item WYSIWYM (What You See Is What You Mean) lo que ves es lo que quieres decir.
+        %\item Es un sistema tipográfico multiplataforma, basado en un lenguaje de descripción de páginas o de marcas.
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Estructura. Características}
+\begin{frame}{Estructura. Características.}
+
+\begin{itemize}
+    \item \LaTeX es un sistema de tipografía diseñado para la composición de textos científicos, tales como:
+    \vspace{5mm} \pause
+    
+\begin{columns}
+    \begin{column}{.16\linewidth}
+    \centering
+    Artículos
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=.1]{article.png} 
+        %\caption{Artículo}
+        %\label{fig:enter-label}
+    \end{figure}
+    \end{column} \pause
+
+    \begin{column}{.16\linewidth}
+    \centering
+    Informes
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=.1]{informe.png} 
+        %\caption{Informe}
+        %\label{fig:enter-label}
+    \end{figure}
+    \end{column} \pause
+
+    \begin{column}{.16\linewidth}
+    \centering
+    Libro
+    \begin{figure}
+        \centering
+        \includegraphics[scale=.1]{libro.png} 
+        %\caption{Libro}
+        \label{fig:enter-label}
+    \end{figure}
+    \end{column} \pause
+    
+    \begin{column}{.16\linewidth}
+    \centering
+    Tesis
+    \begin{figure}
+        \centering
+        \includegraphics[scale=.1]{tesis.png} 
+        %\caption{Tesis}
+        \label{fig:enter-label}
+    \end{figure}
+    \end{column} \pause
+    
+    \begin{column}{.14\linewidth}
+    \centering
+    Presentaciones
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=.1]{ppt.png} 
+        %\caption{Presentaciones}
+        %\label{fig:enter-label}
+    \end{figure}
+    \end{column} \pause
+    
+\end{columns}    
+    
+    %\begin{itemize}
+    %    \item Artículos
+    %    \item Informes
+    %    \item Libros
+    %    \item Tesis
+    %    \item Presentaciones
+    %    \item Poster e Infografías.
+    %\end{itemize}
+    \item Muy útil para publicaciones de interés científico (ingeniería, biología, matemáticas, etc.). \pause
+\end{itemize}
+    
+    \begin{alertblock}{Recuerde} \pause
+        \begin{itemize}
+        \justifying
+            \item \LaTeX no es un procesador de textos (es solo una parte en la generación del documento). \pause
+            \item \LaTeX es un lenguaje de programación que nos permite preparar automáticamente un documento de apariencia estándar y de alta calidad.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Esquema de funcionamiento}
+
+   \begin{figure}
+        \centering
+       \includegraphics[scale=0.23]{9.png} 
+        \caption{Esquema de func.}
+        \label{fig:9}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Esquema de funcionamiento}
+
+   \begin{figure}
+        \centering
+        \includegraphics[scale=0.24]{FlujoLatex.png} 
+        
+        \label{fig:10l}
+
+    \end{figure}
+\end{frame}
+
+\subsection{Ventajas y desventajas}
+\begin{frame}{Ventajas y desventajas}
+\begin{columns} 
+    \begin{column}{.48\linewidth}
+        \begin{exampleblock}{Ventajas}
+        \pause
+            \begin{enumerate}
+            \item Es gratuito y abierto.
+            \item Los documentos son de muy buena calidad tipográfica. 
+            \item Portabilidad.
+            \item Estabilidad en la forma del documento. 
+            \item Automatización de la estructura del documento.
+            \item Estilo de trabajo WYSIWYM (diferente a WYSIWYG). 
+            \item \LaTeX se encarga del formato y usted del contenido.
+    \end{enumerate}
+        \end{exampleblock}
+        
+    \end{column}
+
+    \begin{column}{.48\linewidth} \pause
+    \vspace{-5.5mm}
+        \begin{exampleblock}{Desventajas} \pause
+            \begin{enumerate}
+                \item Indicar la estructura lógica del documento (títulos, secciones, subsecciones, pies de páginas).
+                \item Las instrucciones deben ser muy concretas sobre las características del formato. 
+                \item La información debe ser precisa para que el sistema lo entienda. 
+                \item Manejo de errores y advertencias. 
+                \item No hay revisor ortográfico.
+            \end{enumerate}
+        \end{exampleblock}
+        
+    \end{column}
+\end{columns}
+    
+\end{frame}
+
+\begin{frame}{Opciones de escritorio}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.040]{lyx.png} 
+        \caption*{Lyx.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.10]{WinEdt.jpg} 
+        \caption*{WinEdt.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.10]{texlive1.png} 
+        \caption*{Texlive.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.10]{texmaker.png} 
+        \caption*{Texmaker.}
+    \end{minipage}
+
+    \begin{figure}
+    \centering
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.10]{texnicCenter.jpg} 
+        \caption*{Texnic Center.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.10]{texstudio.jpg} 
+        \caption*{Texstudio.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.10]{miktex1.png} 
+        \caption*{Miktex.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.10\textwidth}
+        \includegraphics[scale=0.060]{Visual_studio_code.jpg} 
+        \caption*{Visual studio code.}
+    \end{minipage}
+    \end{figure}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Opciones de escritorio}
+\begin{figure}
+    \begin{minipage}{0.35\textwidth}
+        \includegraphics[scale=0.35]{papeeria.png} 
+        \caption*{Papeeria.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.35\textwidth}
+        \includegraphics[scale=0.15]{sharelatex_overleaf.png} 
+        \caption*{Overleaf/Sharelatex.}
+    \end{minipage}
+\end{figure}
+\end{frame}
+\begin{comment}
+\subsection{Overleaf}
+\begin{frame}{Overleaf}
+    \begin{alertblock}{Características}
+        \item Es un sitio web para escribir documentos en \LaTeX
+        \item Compila automáticamente.
+        \item Muestra resultados de manera simultánea.
+        \item No se instalan paquetes (disco duro o memoria). Variedad de plantillas y estilos para editar.
+    \end{alertblock}
+    \begin{alertblock}{Requisitos}
+        \item Registro en Overleaf.
+        \item Creación de un nuevo proyecto y documento.
+        \item No se requiere de instalación. Es amigable.
+    \end{alertblock}
+\end{frame}
+\end{comment}
+
+\subsection{Overleaf}
+\begin{frame}{Overleaf}
+    \begin{alertblock}{Características}
+        \item Es un sitio web para escribir documentos en \LaTeX.
+        \item Compila automáticamente.
+        \item Muestra resultados de manera simultánea.
+        \item No se instalan paquetes (no ocupa disco duro o memoria). Variedad de plantillas y estilos para editar.
+    \end{alertblock}
+    \begin{alertblock}{Requisitos}
+        \item Registro en Overleaf.
+        \item Creación de un nuevo proyecto y documento.
+        \item No se requiere de instalación. Es amigable con el usuario.
+    \end{alertblock}
+\end{frame}
+
+
+\section{Estructura del documento}
+\begin{frame}[fragile]{Estructura del documento}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.32]{Estructura1.png} 
+    %\caption{}
+    \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Estructura del documento}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.32]{Estructura2.png} 
+    %\caption{}
+    \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Estructura del documento}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.32]{Estructura3.png} 
+    %\caption{}
+    \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Estructura del documento}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.32]{Estructura4.png} 
+    %\caption{}
+    \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Estructura del documento}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.32]{Estructura5.png} 
+    %\caption{}
+    \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+
+\subsection{Opciones del documento}
+%% Clase del documento
+\begin{frame}[fragile]{Clase del documento.}
+
+\begin{exampleblock}{Clase del documento.}
+
+\verb|\documentclass[opc1, opc2, opc3]{class}|. \pause
+\vspace{2mm}
+Las clases (class, tipo) de documentos son: \pause   
+
+\begin{itemize} 
+    
+    \item article: artículos de revistas científicas, informes técnicos, documentación de programas. \pause
+    \item report: informes largos que contienen varios capítulos, pequeños libros, etc. \pause
+    \item book: para crear libros. \pause
+    \item beamer: presentaciones (diapositivas).
+\end{itemize}
+
+\end{exampleblock}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Opciones del documento}
+
+\begin{exampleblock}{Opciones del documento.}
+
+\verb|\documentclass[opc1, opc2, opc3]{class}|. \pause
+\vspace{2mm}
+Las opciones o parámetros (opc1, opc2, opc3) del documento son: \pause   
+
+    \begin{itemize}
+        \item Tamaño de la fuente: \textbf{10pt, 11pt, 12pt}. \pause
+        \item Tipo de papel: \textbf{a4paper, a5paper, b5paper, \uline{letterpaper}, legalpaper}. \pause
+        \item Con o sin título/portada: \textbf{titlepage, notitlepage}. \pause
+        \item Documento con formato de una o dos columnas: \textbf{onecolumn, twocolumn}. \pause
+        \item Para imprimir documento en una o dos caras: \textbf{oneside, twoside}. \pause
+        \item Cada capítulo empieza en las páginas derechas o en la siguiente página disponible: \textbf{openright, openany}. 
+    \end{itemize}
+
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}{Tipos de papel}
+    \centering
+    \includegraphics[scale=0.365]{Normativa-iso-sobre-papel-Serie-A-y-B.jpg} 
+
+    \scriptsize{Referencia: Couñago, J. (2014, 16 agosto). Normativa ISO sobre papel y sobres: Tamaños estándar. Toshibacenter | Digicopy - Distribuidor Oficial Toshiba. https://www.toshibacenter.es/normativa-iso-sobre-papel-y-sobres-tamanos-estandar/}
+    
+\end{frame}
+
+
+\subsection{Tipo de letra. Fuente de texto.}
+\begin{frame}[fragile]{Tipo de letra. Fuente de texto.}
+
+    \begin{itemize}
+        \item \verb|\textbf{}|. \textbf{Texto escrito en negrita}
+        \item \verb|\textit{}|. \textit{Texto escrito en itálica}
+        \item \verb|\emph{}| \emph{Enfatizar texto}
+        \item \verb|\textrm{}|. \textrm{Texto escrito en familia roman}
+        \item \verb|\textsf{}|. \textsf{Texto escrito en familia sans serif}
+        \item \verb|\texttt{}|. \texttt{Texto escrito en familia de mecanografiado (teletype).}
+    \end{itemize}
+    
+    
+\end{frame}
+
+
+\subsection{Tamaño de letra.}
+\begin{frame}[fragile]{Tamaño de letra.}
+
+    \begin{itemize}
+        \tiny{\item \tiny{Hola mundo! 
+        \verb|\tiny{Hola mundo!}|}. \pause
+        
+        \item \scriptsize{Hola mundo!   \verb|\scriptsize{Hola mundo!}|}. \pause
+        
+        \item \footnotesize{Hola mundo!  \verb|\footnotesize{Hola mundo!}|}. \pause
+
+        \item \small{Hola mundo!  \verb|\small{Hola mundo!}|}. \pause
+
+        \item \normalsize{Hola mundo!  \verb|\normalsize{Hola mundo!}|}. \pause
+
+        \item \large{Hola mundo!  \verb|\large{Hola mundo!}|}. \pause
+
+        \item \Large{Hola mundo!  \verb|\Large{Hola mundo!}|}. \pause
+
+        \item \LARGE{Hola mundo!  \verb|\LARGE{Hola mundo!}|}. \pause
+
+        \item \huge{Hola mundo!  \verb|\huge{Hola mundo!}|}. \pause
+
+        \item \Huge{Hola mundo!  \verb|\Huge{Hola mundo!}|}.
+       
+    \end{itemize}
+    
+    
+\end{frame}
+
+
+\begin{frame}{Tamaño de letra}
+
+    \begin{figure}
+        \centering
+        \includegraphics[scale=.31]{tamanoLetra.png} 
+        \caption{Tamaños de letra.}
+        \label{fig:enter-label}
+    \end{figure}
+
+\end{frame}
+
+
+\subsection{Paquetes}
+\begin{frame}[fragile]{Paquetes}
+    \begin{alertblock}{¿Qué es un paquete?}
+        
+    \begin{itemize} 
+        \item Un paquete (package) permite extender las capacidades de Latex tales como: \pause
+        \begin{itemize}
+            \item Incluir imágenes y tablas. \pause
+            \item Incluir texto coloreado. \pause
+            \item Incluir ecuaciones. \pause
+            \item Incluir soporte para diferentes idiomas. \pause
+        \end{itemize}
+
+        \item El comando para utilizar el paquete es \verb|\usepackage[opc1, opc2, opc3]{paquete}| \pause
+        
+        \item Pueden incluirse tantos paquetes como sea necesario. \pause
+        \item \textbf{Todos los paquetes se definen en el preámbulo.}
+        %\item Si un paquete ya va incluido por defecto (según el tipo de documento), sus opciones van en el documentclass.
+    \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+
+
+\section{Entornos figure, table, lists (enumerate e itemize)}
+
+\begin{frame}[fragile]{Entornos Figure, Table, Columns}
+
+\begin{alertblock}{¿Qué es un entorno?}
+\justifying
+    Es una estructura que permite dar formato y control a ciertas partes del documento. Los entornos son áreas del documento donde se aplican reglas de formato específicas. Cada entorno tiene un comienzo y un final, y todo el contenido dentro de ese rango está sujeto a las propiedades del entorno.
+\end{alertblock}
+
+\vspace{0.5mm}
+
+
+\begin{columns}\pause
+
+    \begin{column}{.68\linewidth}        
+    \begin{block}{Entorno figure. Opción por defecto.}
+        \verb|\begin{figure}[Posición]|
+        
+                \verb|\centering|
+                   \verb|\includegraphics[width=0.2\linewidth]{imagen.png}|
+                \verb|\caption{Pie de figura.}|
+                
+                \verb|\label{Ref. en texto.}|
+                
+        \verb|\end{figure}|
+
+    \end{block}    
+    \end{column}
+
+
+\begin{comment}
+
+\begin{column}{.53\linewidth}
+        \begin{block}{Entorno subfigure}
+        \begin{itemize}
+            \item \small{Añadir el paquete \verb|\usepackage{subcaption}| y el entorno \verb|\begin{subfigure}|}.
+            \item \small{Para rotar la página e incluir una imagen grande, utilizar el paquete \verb|\usepackage{pdflscape}| y el entorno \verb|\begin{landscape}|}.
+        \end{itemize}
+        \end{block} 
+\end{column}
+\end{comment}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]{Entornos Figure, Table, Columns}
+    \begin{columns}
+
+    \begin{column}{.68\linewidth}        
+    \begin{block}{Entorno figure. Opción por defecto.}
+        \verb|\begin{figure}[Posición]|
+        
+                \verb|\centering|
+                   \verb|\includegraphics[width=0.2\linewidth]{imagen.png}|
+                \verb|\caption{Pie de figura.}|
+                
+                \verb|\label{Ref. en texto.}|
+                
+        \verb|\end{figure}|
+
+    \end{block}    
+    \end{column}
+
+
+    \end{columns}
+
+\vspace{0.5cm}
+Esta opción ajusta el ancho de la imagen para que sea la mitad del ancho de la línea actual (\verb|\linewidth |). Es el ancho del texto en el entorno donde te ubicas. No necesariamente es igual que el ancho total de la página.
+    
+\end{frame}
+
+
+\begin{frame}[fragile]{Entornos Figure, Table, Columns}
+    \begin{columns}\pause
+
+    \begin{column}{.52\linewidth}        
+    \begin{block}{Entorno figure (scale y angle)}
+        \verb|\begin{figure}[Posición]|
+        
+                \verb|\centering|
+                \verb|\includegraphics[scale=1,angle=1]{ruta}|
+
+                \verb|\caption{Pie de figura.}|
+                
+                \verb|\label{Ref. en texto.}|
+                
+        \verb|\end{figure}|
+
+    \end{block}    
+    \end{column}
+
+        \begin{column}{.52\linewidth}        
+    \begin{block}{Entorno figure (width y height)}
+        \verb|\begin{figure}[Posición]|
+        
+                \verb|\centering|
+
+                \verb|\includegraphics[width=1,height=1]{ruta}|
+                \verb|\caption{Pie de figura.}|
+                
+                \verb|\label{Ref. en texto.}|
+                
+        \verb|\end{figure}|
+
+    \end{block}    
+    \end{column}
+
+
+    
+    \end{columns}
+
+\begin{itemize}
+    \item \verb|scale| multiplica el tamaño original de la imagen.
+    \item \verb|angle| rota la imagen en grados, en sentido antihorario.
+
+\pause
+    \item \verb|width| controla el ancho de la imagen.
+
+    \item \verb|height| controla el alto de la imagen.
+
+\end{itemize}    
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Posicionamiento de imágenes y figuras}
+\begin{table}[H]
+\begin{tabular}{|l|l|}
+\hline
+Posición   &                                                            \\ \hline
+h (here)   & La imagen/tabla debe ir  ' aquí '.                            \\ \hline
+t (top)    & La imagen/tabla debe ir en la parte superior de la página. \\ \hline
+b (bottom) & La imagen/tabla debe ir en la parte inferior de la página. \\ \hline
+p (page)   & Juntar imágenes/tablas en una sola página.                    \\ \hline
+!          & Ignorar reglas de posicionamiento.                         \\ \hline
+H          & Ignorar reglas de posicionamiento, superior a h!.          \\ \hline
+\end{tabular}
+\caption{Posicionamiento de elementos flotantes.}
+\end{table}
+
+Para habilitar los elementos el posicionamiento en figuras y tablas (elementos flotantes), añada en el preámbulo el paquete \verb|\usepackage{float}|.
+
+\end{frame}
+
+\begin{frame}[fragile]{Entorno subfigure}
+\centering
+
+    \begin{block}{Entorno subfigure y pdflscape}
+        \begin{itemize}
+            \item \small{Añadir el paquete \verb|\usepackage{subcaption}| y el entorno \verb|\begin{subfigure}{0.45\textwidth}|}. \verb|\textwidth| nos va a ayudar a definir el espacio que van a ocupar las imágenes en el renglón.
+            \begin{itemize} \pause
+                \item Debe ir dentro del entorno figure.
+            \end{itemize} \pause
+            \item \small{Para rotar la página e incluir una imagen grande, utilizar el paquete \verb|\usepackage{pdflscape}| y el entorno \verb|\begin{landscape}|}.
+            \begin{itemize}
+                \item El entorno figure debe ir dentro del entorno landscape.
+            \end{itemize}
+                
+        \end{itemize}
+    \end{block}
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Entorno subfigure}
+
+     
+    \begin{exampleblock}{Entorno subfigure}
+    \verb|\begin{figure}|
+    
+        \hspace{1cm}\verb|\begin{subfigure}{0.45\textwidth}|
+        
+                \hspace{1.75cm}\verb|\centering|
+                
+                \hspace{1.75cm}\verb|\includegraphics[scale=1,angle=1]{ruta}|
+
+               \hspace{1.75cm} \verb|\caption{Pie de figura.}|
+                
+                \hspace{1.75cm}\verb|\label{Ref. en texto.}|
+                
+        \hspace{1cm}\verb|\end{subfigure}|
+
+        \verb|\end{figure}|
+
+    \end{exampleblock}    
+    
+
+\end{frame}
+
+\begin{frame}[fragile]{pdflscape}
+
+Para este entorno, se sugiere iniciar en una nueva página con el comando \verb|\newpage|
+        \begin{exampleblock}{Entorno landscape}
+        \verb|\begin{landscape}|
+        
+        \hspace{1cm}\verb|\begin{figure}|
+        
+                \hspace{1.75cm}\verb|\centering|
+
+                \hspace{1.75cm}\verb|\includegraphics[width=1,height=1]{ruta}|
+                
+               \hspace{1.75cm} \verb|\caption{Pie de figura.}|
+                
+               \hspace{1.75cm} \verb|\label{Ref. en texto.}|
+                
+        \hspace{1cm}\verb|\end{figure}|
+        
+        \verb|\end{landscape}|
+    \end{exampleblock}    
+\end{frame}
+
+
+\begin{frame}{Ejemplo con el entorno subfigure (con el paquete subcaption)}
+    \begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth} %primera fila de imagenes
+        \centering
+        \includegraphics[scale=0.05]{astronomia.jpg} 
+        \caption{Subtítulo de la primera imagen}
+        \label{fig:sub1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.05]{astronomia.jpg} 
+        \caption{Subtítulo de la segunda imagen}
+        \label{fig:sub2}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth} %segunda fila de imagenes
+        \centering
+        \includegraphics[scale=0.05]{astronomia.jpg} 
+        \caption{Subtítulo de la primera imagen}
+        \label{fig:sub1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.05]{astronomia.jpg} 
+        \caption{Subtítulo de la segunda imagen}
+        \label{fig:sub2}
+    \end{subfigure}  
+    \caption{Título general de las imágenes}
+    \label{fig:general}
+\end{figure}
+
+
+\end{frame}
+
+
+
+\subsection{Entorno table}
+\begin{frame}[fragile]{Entornos figure, tabla, listas}
+\begin{columns}
+    \begin{column}{.48\linewidth}
+    \begin{block}{Entorno tabla}
+        \verb|\begin{table}[Posicion]|
+        
+        \hspace{4.5mm}    \verb|\centering|
+            
+        \hspace{8.5mm}    \verb|\begin{tabular}{c  c}| 
+            
+        \hspace{8.5mm}    \verb|  x   &  x \\    |
+            
+        \hspace{8.5mm}    \verb|  x   &  x       |
+            
+        \hspace{8.5mm}    \verb|\end{tabular}|
+            
+        \hspace{4.5mm}    \verb|\caption{Pie de tabla.}|
+        
+        \hspace{4.5mm}\verb|\label{Ref. en texto.}|
+            
+        \verb|\end{table}|
+
+    \end{block}    
+    \end{column}
+\end{columns}
+\pause
+\begin{alertblock}{Editor de tablas en línea}
+    https://www.tablesgenerator.com/
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Entorno listas}
+\begin{frame}[fragile]{Entornos figura, tabla, listas}
+
+\vspace{5.5mm}
+\begin{columns}
+
+    \begin{column}{.48\linewidth}
+    \begin{exampleblock}{Entorno itemize. Lista no enumerada.}
+        
+    
+        \verb|\begin{itemize}|
+        %\verb|\renewcommand{\labelitemiii}{\ding{42}}|
+        \\    
+         \hspace{4mm}   \verb|\item Texto 1|
+            
+         \hspace{4mm}    \verb|\item[\ding{51}] Texto 2|
+            
+        \hspace{4mm}     \verb|\item Texto 3|
+        
+        \verb|\end{itemize}|  
+    \end{exampleblock}
+    \end{column} 
+\pause
+    \begin{column}{.48\linewidth}
+    \begin{exampleblock}{Entorno enumerate. Lista enumerada.}
+        
+        \verb|\begin{enumerate}|
+        %\verb|\renewcommand{\labelenumi}{$\bigstar$}|
+        \\
+        \hspace{4mm}     \verb|\item Texto 1|
+            
+        \hspace{4mm}     \verb|\item Texto 2|
+            
+        \hspace{4mm}     \verb|\item Texto 3|
+            
+        \verb|\end{enumerate}|
+    \end{exampleblock}
+
+
+        %Admin. (2021, 4 agosto). Lists in Beamer - Complete Guide - LaTeX Beamer. LaTeX Beamer. https://latex-beamer.com/tutorials/lists/
+    \end{column}
+  
+\end{columns}
+
+\begin{alertblock}{Para itemize se puede cambiar el símbolo del listado para cada nivel (i , ii, ii).}
+\begin{itemize}
+    \item Añadir paquetes \verb|\usepackage{enumitem}| y \verb|\usepackage{pifont}|
+    %\item \verb|\renewcommand{\labelenumi}{$\bigstar$}|
+    \item \verb|\renewcommand{\labelitemii}{$-$}|. Cada \textit{i} \textbf{es un nivel en la lista.}
+    \item \verb|\item[\ding{51}] Texto| %\verb|\renewcommand{\labelitemiii}{\ding{42}}|
+    
+    
+    
+\end{itemize}
+    
+\end{alertblock}
+\end{frame}
+
+
+\begin{frame}{Estilos de símbolos}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=.25]{pifont.png} 
+        \caption{Lista de símbolos para utilizar en las listas.}
+        \label{fig:enter-label}
+    \end{figure}
+\end{frame}
+
+
+\section{Comandos adicionales}
+\begin{frame}[fragile]{Comandos adicionales}
+    \begin{columns}
+        \begin{column}{.6\linewidth} 
+            \begin{block}{Opciones de indentación}
+            \begin{enumerate} \pause
+                \item \verb|\noindent|: Quitar sangría. Se coloca antes de cada párrafo. \pause
+                \item  \verb|\usepackage{parskip}| Quitar sangría: Se coloca en el preámbulo, ya no es necesario usar \verb|\noindent|. \pause
+                \begin{enumerate}
+                    \item \verb|\setlength{\parskip}{Espaciamiento mm/cm}| Espaciamiento entre párrafos. \pause
+                \end{enumerate}
+            \end{enumerate}
+            \end{block}    
+        \end{column}    
+    
+    
+        \begin{column}{.45\linewidth} 
+            \begin{block}{Texto aleatorio} \pause
+                \verb|\usepackage{blindtext}|. Se carga paquete de texto aleatorio en el preámbulo. Para usarlo, escribir: \verb|\blindtext|. \pause
+            \end{block}    
+            \begin{block}{Sección de Resumen} \pause
+                \verb|\begin{abstract}| \\
+                   \hspace{3mm} Aquí se escribe el resumen...\\ 
+                \verb|\end{abstract}|
+            \end{block} 
+        \end{column}    
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Comandos adicionales}
+    \begin{columns}
+        \begin{column}{.65\linewidth}    
+            \begin{block}{Otros}
+            \begin{itemize} \pause
+                \item \verb|\newpage|: Para saltar a la página siguiente. \pause
+                \item  \verb|\underline|: \underline{Subrayar texto (Comando inestable).} \pause
+                \item \verb|\%| Símbolo de porcentaje: 85\% . \verb|\| Es un caracter reservado por Latex. \pause
+                \item \verb|\usepackage[idioma]{babel}|: Para cambiar el idioma predeterminado. \pause
+                \item \verb|\section{}| o \verb|\chapter{}|. Nueva sección o capítulo (para artículo o libro). \pause
+                \item \verb|\subsection{}| Subsecciones dentro de la sección o capítulo.
+                \item \verb|\pagecolor| Cambia el color de fondo de la página.
+            \end{itemize}
+            \end{block} 
+        \end{column}    
+    \end{columns}
+\end{frame}
+
+\subsection{Comandos inestables}
+\begin{frame}[fragile]{Comandos inestables}
+    \begin{columns}
+        \begin{column}{.8\linewidth}    
+            \begin{block}{Subrayar con underline.}
+            \begin{itemize} \pause
+                \item Causa problemas de formato. Comportamiento impredecible.
+                \item El texto se sale de la línea (página). 
+                \item Subraya de forma directa. No ajusta automáticamente el espacio y posición de subrayado.
+                \item Una alternativa es usar el paquete \verb|\usepackage[normalem]{ulem}|
+                    \begin{itemize}
+                        \item Este es un texto \uline{subrayado con el paquete ulem y con el comando \emph{uline} y ya no se sale de la línea.}
+                        \item \verb|\uline{Texto}|
+                    \end{itemize}
+            \end{itemize}
+            \end{block} 
+        \end{column}    
+    \end{columns}
+\end{frame}
+
+
+\subsection{Comandos inestables}
+\begin{frame}[fragile]{Comandos inestables}
+    \begin{columns}
+        \begin{column}{.8\linewidth}    
+            \begin{block}{usepackage[normalem]\{ ulem \}}
+            \begin{itemize} \pause
+                \item \verb|\uline{Texto importante}|  \uline{Texto subrayado}.
+                \item \verb|\uuline{urgent}| \uuline{Doble subrayado.}
+                \item \verb|\uwave{boat}| \uwave{Subrayado ondulado.}
+                \item \verb|\sout{wrong}| \sout{Línea horizontal sobre el texto.}
+                \item \verb|\xout{removed}| \xout{Texto marcado con líneas diagonales}.
+                \item \verb|\dashuline{dashing}| \dashuline{Subrayar con línea discontinua}.
+                \item \verb|\dotuline{dotty}| \dotuline{Subrayar con línea punteada.}
+                
+            \end{itemize}
+            \end{block} 
+        \end{column}    
+    \end{columns}
+\end{frame}
+
+
+\subsection{Caracteres especiales/reservados}
+
+
+\begin{frame}[fragile]{Caracteres especiales/reservados}
+
+Los siguientes caracteres están reservados en \LaTeX. Todos van precedidos de la diagonal invertida \verb|\| para hacer uso de ellos en un texto, por ejemplo 5\%, 50\$, \{ texto \}.
+
+    \begin{columns}
+        \begin{column}{.5\linewidth}  
+    \begin{itemize}
+\item \$: Permite incluir entorno matemático en el texto.
+\item \%: Para comentarios.
+\item \^{}: Acento circunflejo. Se usa como exponente en las ecuaciones.
+\item \_: Guión bajo. Funciona como subíndice.
+\item \&: Para separar columnas en tablas y matrices (arreglos).
+
+
+\end{itemize}
+\end{column}
+
+\begin{column}{.5\linewidth} 
+    \begin{itemize}
+        \item \{ \}: Llaves. Se usan para llamar a un paquete y otras opciones de formato de línea.
+        \item \textbackslash: \hspace{0.5mm} Para iniciar comandos y entornos.
+        \item $<$ $>$: Para mostrar cierto contenido en beamer (diapositivas) ó en el índice.
+        \item $[$ $]$: Se usan en opciones del documento y de los paquetes.
+    \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\end{document}
+
+
+

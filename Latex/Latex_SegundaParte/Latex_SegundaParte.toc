@@ -1,0 +1,10 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Color del texto}{3}{0}{1}
+\beamer@sectionintoc {2}{{Alineación del texto}}{15}{0}{2}
+\beamer@sectionintoc {3}{Columnas}{19}{0}{3}
+\beamer@sectionintoc {4}{Márgenes del documento}{28}{0}{4}
+\beamer@sectionintoc {5}{Referencias bibliográficas}{29}{0}{5}
+\beamer@sectionintoc {6}{Generación de portada con titlepage. índice general, de figuras y tablas}{44}{0}{6}
+\beamer@subsectionintoc {6}{1}{Índice general. Índice de figuras y de tablas}{45}{0}{6}
+\beamer@subsectionintoc {6}{2}{Encabezados y pie de página}{46}{0}{6}
+\beamer@subsectionintoc {6}{3}{Hyperlinks (hiperenlaces e hipervínculos)}{48}{0}{6}

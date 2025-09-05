@@ -1,0 +1,630 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+%\newtheorem{theorem}{Teorema}[section]
+\usepackage{tcolorbox}
+\usepackage{float}
+\usepackage{animate}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{ragged2e}
+\usepackage[spanish,mexico]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{xcolor}
+\usepackage{listings} %
+\renewcommand{\lstlistingname}{Código}
+
+%\lstset{language=python,
+%    basicstyle=\ttfamily\normalsize,
+%    keywordstyle=\color{blue},
+%    stringstyle=\color{red},
+%    commentstyle=\color{green},
+%    showstringspaces=false,
+%    numbers=left,
+%    breaklines=true,
+%    frame=single,
+%    captionpos=b,
+%}
+
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true, 
+linkcolor=magenta, 
+urlcolor=orange, 
+citecolor=orange}
+
+\usepackage[all]{xy}
+
+\usetheme{Warsaw} % Warsaw, Bergen, Madrid, CambridgeUS, Berlin, Antibes 
+\usecolortheme{seahorse} %albatross, beaver, crane, wolverine, seahorse
+\title[\hspace{25mm} \insertframenumber/\inserttotalframenumber]{\bf Introducción a Latex}
+%\subtitle{Clase 1}
+%\author[Miguel Ángel Carrillo Lucía]{Ing. Miguel~Ángel~Carrillo~Lucía\inst{1,2}}
+
+\author[Taller de Herramientas Computacionales - 2024-1] % (optional, for multiple authors)
+{\hspace{2.70mm} \Large{Miguel Ángel Carrillo Lucía}  \and \Large{Leonardo David Solís Rodríguez}} %\inst{2}}
+
+%% Institución
+\institute[] % no es necesario llenar la opción
+{
+    %\inst{1}
+    %Facultad de Ciencias\\
+    \large{Universidad Nacional Autónoma de México}\\
+    \large{Facultad de Ciencias}\\
+    \large{Departamento de Matemáticas}\\
+    \large{Licenciatura en Matemáticas Aplicadas}
+}
+%\institute{Ciudad de México}
+\date{\today}
+
+\usepackage{transparent}
+\usepackage{eso-pic}
+
+%\setbeamertemplate{background}{
+
+%{\transparent{0.075}\includegraphics[width=1.0\paperwidth,height=1.0\paperheight]{escudos/matematicas_aplicadas.jpg}}
+%}
+
+
+\setbeamertemplate{background}{
+  \rule{0pt}
+  {.90\paperheight}%
+  %{0.90}\paperheight
+  \hspace*{.5\paperwidth}%
+  \paperwidth1.50mm
+  \makebox[1pt][c]{\transparent{0.120}\includegraphics[scale=0.56]{imagenes/logos_unam_ciencias.png} }
+}
+
+\begin{document}
+
+%\maketitle
+
+\begin{frame}
+    \titlepage
+    %\vspace{-50pt}
+    %\begin{figure}[htpb]
+    %    \begin{center}
+    %        \includegraphics[width=0.145\linewidth]{escudos/escudo_ciencias_unam.png} \hspace{95mm}
+    %        \includegraphics[width=0.145\linewidth]{escudos/escudo_unam.png}
+    %    \end{center}
+    %\end{figure}
+\end{frame}
+
+%\section{Agenda}
+\begin{frame}{Agenda}
+     \tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+
+
+\section{Ecuaciones}
+
+\begin{frame}[fragile]{Ecuaciones}
+    \begin{alertblock}{El entorno para ecuaciones.}
+        \begin{itemize}
+            \item Latex es muy útil para escribir ecuaciones. Para utilizarlo, es necesario añadir tres paquetes que a continuación se enlistan:
+            \begin{enumerate}
+                \item \textbf{amsmath} (AMS Math): Mejora el comportamiento y el aspecto de las ecuaciones. Permite añadir un asterisco en el entorno equation para crear ecuaciones sin enumerar.
+                \item \textbf{amsthm} (AMS Theorem): define los entornos teorema, corolario, lema, definición.
+                \item \textbf{amssymb} (AMS Symbol): carga otro paquete llamado amsfonts e incluye una colección de símbolos matemáticos.
+            \end{enumerate}
+            \item Los paquetes se pueden cargar por separado o bien en una sola línea de la siguiente forma:
+            \begin{itemize}
+                \item \verb|\usepackage{amsmath, amsthm, amssymb}|
+            \end{itemize}
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\subsection{Alineación de ecuaciones}
+\begin{frame}{Alineación de ecuaciones}
+    \begin{exampleblock}{Alineación de ecuaciones}
+        \begin{itemize}
+            \item La alineación de las ecuaciones se define en las opciones del tipo de documento (documentclass):
+            \begin{enumerate}
+                \item leqno: las ecuaciones están centradas pero la enumeración se coloca del lado izquierdo.
+  
+                \item fleqn: alinea las ecuaciones a la izquierda y las enumera del lado derecho.
+
+
+                \item ceqn: centra las ecuaciones (opción por default si no se especifíca la alineación) y las enumera del lado derecho.
+            \end{enumerate}
+            
+        \end{itemize}
+    \end{exampleblock}
+
+\begin{alertblock}{Cuidado.}
+    \begin{itemize}
+        \item Estas opciones son para todo el documento. No se pueden hacer combinaciones con leqno, fleqn, ceqn.
+    \end{itemize}
+    
+\end{alertblock}
+\end{frame}
+
+\subsection{El modo matemático en Latex}
+\begin{frame}[fragile]{El modo matemático en Latex}
+    \begin{block}{Modo matemático en texto.}
+        El modo matemático se puede poner de tres formas dentro del texto:
+        \begin{enumerate}
+            \item \verb|$ ecuación $| 
+            \begin{itemize}
+                \item Ejemplo: La variable \verb|$x^{2}$| está elevada al cuadrado. \hspace{1mm} $ \rightarrow $ \hspace{1mm} La variable $x^{2}$ está elevada al cuadrado.
+            \end{itemize}
+            \item \verb|[\ ecuación \]|
+            \begin{itemize}
+                \item Ejemplo: La variable \verb|[\ $x^{3} \]| está elevada al cubo \hspace{1mm} $ \rightarrow $ \hspace{1mm} La variable $x^{3}$ está elevada al cubo.
+            \end{itemize}
+            \item \verb|\begin{math} c^2=a^2+b^2 \end{math}| 
+            \begin{itemize}
+                \item Ejemplo: La variable \verb|\begin{math} x^3 \end{math}| está elevada al cubo \hspace{1mm} $\rightarrow$ \hspace{1mm} La variable \begin{math}
+                    x^3 \end{math} está elevada al cubo
+            \end{itemize}
+        \end{enumerate}
+    \end{block}
+
+    $\ast$ \textit{No es necesario cargar paquetes}
+    
+\end{frame}
+
+%\subsection{Matemática fuera del párrafo}
+\begin{comment}
+    
+
+\begin{frame}[fragile]{Matemática fuera del párrafo}
+\begin{columns}
+    \begin{column}{.4\linewidth}
+    \begin{block}{displaymath}
+        \verb|\begin{displaymath}| \\
+        \hspace{1cm}\verb|Ecuación| \\
+        \verb|\end{displaymath}|   
+    \end{block}
+    \end{column}
+
+    
+    \begin{column}{.4\linewidth}
+    \begin{exampleblock}{Ejemplo}
+        La ecuación se coloca dentro del párrafo, por ejemplo: \begin{displaymath}
+            c^2=a^2+b^2
+        \end{displaymath} pero el comando de \textit{Overleaf} lo ordena en un renglón independiente.
+    \end{exampleblock}
+    \end{column}
+\end{columns}
+
+$\ast$ \textit{No es necesario cargar paquetes}
+    
+\end{frame}
+\end{comment}
+%\subsection{Enumerar ecuaciones}
+
+\begin{frame}[fragile]{Ecuaciones. Numeradas y no enumeradas}
+
+\textbf{Paquete:} \verb|\usepackage{amsmath}|
+\vspace{0.3cm}
+
+\begin{columns}
+    \begin{column}{0.4\linewidth}
+    \begin{block}{Entorno numerado}
+        \verb|\begin{equation}|\\
+        \hspace{1cm} \verb|c^2=a^2+b^2|\\
+        \verb|\label{ec:Nombre}|
+        \verb|\end{equation}|\\
+    \end{block}
+    \begin{block}{Entorno sin numerar}
+        \verb|\begin{equation*}|\\
+        \hspace{1cm} \verb|c^2=a^2+b^2|\\
+        \verb|\end{equation*}|
+    \end{block}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+    \begin{exampleblock}{Numerada}
+        \begin{equation}
+            c^2=a^2+b^2
+            \label{ec:Pitagoras}
+        \end{equation}
+    \end{exampleblock}
+    \vspace{1cm}
+    \begin{exampleblock}{Sin Numerar}
+        \begin{equation*}
+            c^2=a^2+b^2
+            \label{ec:Pitagoras}
+        \end{equation*}
+    \end{exampleblock}
+    \end{column}
+\end{columns}
+    
+\end{frame}
+
+\subsection{Espacios, símbolos y operaciones}
+\begin{frame}[fragile]{Espacios y símbolos}
+    \begin{exampleblock}{Ejemplo}
+        \verb|\begin{equation}|\\
+        \hspace{1cm} \verb|x^2 \geq 0 \quad \text{para todo } x \in \mathbf{R}|\\
+        \hspace{1cm} \verb|\label{ec:Ejemplo}|\\
+        \verb|\end{equation}|
+    \end{exampleblock}
+    \begin{exampleblock}{Resultado}
+        \begin{equation}
+        x^2 \geq 0 \quad \text{para todo } x \in \mathbf{R}
+        \label{ec:Ejemplo}
+    \end{equation}
+    \end{exampleblock}
+   \textbf{Comandos:}
+   \begin{table}[h!]
+       \centering
+       \begin{tabular}{c c | c c | c c }
+           \verb|\quad| & Espacio normal &
+           \verb|\,| & $3/18$ de \verb|\quad| &
+           \verb|\:| & $4/18$ de \verb|\quad| \\
+           \verb|\;| & $5/18$ de \verb|\quad| &
+           \verb|\!| & $-3/18$ de \verb|\quad| &
+           \verb|\qquad| & doble de \verb|\quad|\\
+       \end{tabular}
+       \caption{Espacios y símbolos}
+       \label{tab:my_label}
+   \end{table}
+
+\end{frame}
+
+\begin{frame}[fragile]{Algunos símbolos}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c c | c c | c c | c c}
+        $\times$ & \verb|\times| & $\div$ & \verb|\div| & $\pm$ & \verb|\pm| & $\cdot$ & \verb|cdot| \\
+        $\circ$ & \verb|\circ| & $\prime$ & \verb|\prime| & $\infty$ & \verb|\infty| & $\neg$ & \verb|neg| \\
+        $\wedge$ & \verb|\wedge| & $\vee$ & \verb|\vee| & $\cup$ & \verb|\cup| & $\cap$ & \verb|cap| \\
+        $\forall$ & \verb|\forall| & $\exists$ & \verb|\exists| & $\in$ & \verb|\in| & $\notin$ & \verb|notin| \\
+        $\subset$ & \verb|\subset| & $\supset$ & \verb|\supset| & $\rightarrow$ & \verb|\rightarrow| & $\leftarrow$ & \verb|\leftarrow| \\
+        $\leftrightarrow$ & \verb|\leftrightarrow| & $\Rightarrow$ & \verb|\Rightarrow| & $\Leftarrow$ & \verb|\Leftarrow| & $\Leftrightarrow$ & \verb|\Leftrightarrow| \\
+        $\dot{a}$ & \verb|\dot{a}| & $\hat{a}$ & \verb|\hat{a}| & $\bar{a}$ & \verb|\bar{a}| & $\tilde{a}$ & \verb|\tilde{a}| \\
+        $\neq$ & \verb|\neq| & $\geq$ & \verb|\geq| & $\leq$ & \verb|\leq| & $\sim$ & \verb|\sim| \\
+        $\ldots$ & \verb|\ldots| & $\cdots$ & \verb|\cdots| & $\vdots$ & \verb|\vdots| & $\ddots$ & \verb|\ddots| \\
+    \end{tabular}
+    \caption{Símbolos}
+    \label{tab:my_label}
+\end{table}
+
+\end{frame}
+
+%\subsection{Operaciones}
+
+\begin{frame}[fragile]{Operaciones}
+    \begin{table}
+        \centering
+        \begin{tabular}{c c | c c | c c | c c}
+             $\sqrt{a}$ & \verb|\sqrt{a}| & $\sqrt[n]{a}$ & \verb|\sqrt[n]{a}| & $\exp$ & \verb|\exp| & $\log$ & \verb|\log| \\ &&&&&&&\\%\vspace{5mm}
+             $\ln$ & \verb|\ln| & $\sin$ & \verb|\sin| & $\cos$ & \verb|\cos| & $\tan$ & \verb|\tan| \\ &&&&&&& \\ %\vspace{5mm}
+             $\lim_{a}$ & \verb|\lim_{a}| & $\sum_{a}^{b}$ & \verb|\sum_{a}^{b}| & $\prod_{a}^{b}$ & \verb|\prod_{a}^{b}| & $\int_{a}^{b}$ & \verb|\int_{a}^{b}| \\ &&&&&&& \\ %\vspace{5mm}
+             $\iint$ & \verb|\iint| & $\oint$ & \verb|\oint| & $\partial$ & \verb|\partial| & $\nabla$ & \verb|\nabla| \\ &&&&&&& \\
+             $\frac{a}{b}$ & \verb|\frac{a}{b}| & & & & & & \\
+        \end{tabular}
+        \caption{Operaciones}
+        \label{tab:my_label}
+    \end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Ejercicio}
+    \textbf{Escriba la fórmula general para resolver la ecuación de segundo grado}
+    \begin{exampleblock}{Respuesta}
+        \begin{equation}
+                x_{1,2}=\frac{ -b\pm \sqrt{b^{2}-4ac}}{2a}
+                \label{ec:Chicharronera}
+        \end{equation}
+    \end{exampleblock}
+    La ecuación \ref{ec:Chicharronera} permite resolver ecuaciones de segundo grado.
+
+    \vspace{5mm}
+    $\ast$ Se hace referencia a la ecuación con el comando \verb|\ref{Nombre}|
+    
+\end{frame}
+
+\subsection{Entornos}
+\begin{frame}[fragile]{Entorno split}
+\begin{alertblock}{Entorno split}
+El entorno split sirve para dividir la ecuación en partes pequeñas o desarrollos de las mismas. Se utiliza el símbolo \& para definir a partir de dónde se fragmenta la expresión
+
+    \verb|\begin{equation}|\\
+    \hspace{1cm} \verb|\begin{split}|\\
+    \hspace{2cm}\verb|5+7-2+4[12\cdot 3 -2]/2 & = 5+7-2+4[34]/2 \\| \\
+    \hspace{2cm} \verb|& = 5+7-2+4[17]  \\| \\
+    \hspace{2cm} \verb|& = 78| \\
+    \hspace{1cm} \verb|\end{split}| \\
+    \verb|\end{equation}|
+\end{alertblock}
+
+
+\end{frame}
+\begin{frame}[fragile]{Entorno split}
+    \begin{exampleblock}{Ejemplo}
+    \begin{equation}
+            \begin{split}
+                5+7-2+4[12\cdot 3 -2]/2 & = 5+7-2+4[34]/2 \\
+                       & = 5+7-2+4[17]  \\
+                       & = 78
+            \end{split}
+    \end{equation}
+\end{exampleblock}
+\end{frame}
+
+
+%\subsection{Entorno multline}
+\begin{frame}[fragile]{Entorno multline}
+\begin{block}{Ejemplo}
+    \verb|\begin{multline}|\\
+    \hspace{1cm}\verb|p(x) =-5x^{8} x^{7} - 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\| \\
+    \hspace{1cm} \verb|- 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3| \\
+    \verb|\end{multline}|
+\end{block}
+
+\begin{exampleblock}{Resultado}
+    \begin{multline}
+            p(x) =-5x^{8} x^{7} - 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\ 
+            - 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3
+        \end{multline}
+\end{exampleblock}      
+\end{frame}
+
+%\subsection{Sistemas de ecuaciones}
+\begin{frame}[fragile]{Sistemas de ecuaciones}
+    \begin{columns}
+        \begin{column}{0.4\linewidth}
+        \begin{block}{Sin alinear}
+            \verb|\begin{gather}| \\
+            \hspace{1cm}\verb|2x + 2y =20 \\| \\
+            \hspace{1cm}\verb|7x - 9y -2y = 213| \\
+            \verb|\end{gather}| \\
+        \end{block}
+        \begin{block}{Alineada}
+            \verb|\begin{align}| \\
+            \hspace{1cm}\verb|2x + 2y &=20 \\| \\
+            \hspace{1cm}\verb|7x - 9y -2y &= 213| \\
+            \verb|\end{align}| \\
+        \end{block}
+        \end{column}
+        \begin{column}{0.4\linewidth}
+        \begin{exampleblock}{Resultado sin alinear}
+            \begin{gather}
+                2x + 2y =20 \\
+                7x - 9y -2y = 213
+            \end{gather}
+        \end{exampleblock}
+        \begin{exampleblock}{Resultado alineado}
+            \begin{align}
+                 2x + 2y &=20 \\
+                7x - 9y -2y &= 213
+            \end{align}
+        \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%\subsection{Funciones a trozos}
+\begin{frame}[fragile]{Funciones a trozos}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+        \begin{block}{Ejemplo}
+            \verb|\begin{equation}| \\
+            \hspace{0.5cm}\verb|f(x)= \left|\\ 
+            \hspace{0.5cm}\verb|\{ \begin{array}{lcc}|\\
+            \hspace{1cm}\verb|5 &   si  & x \leq 2 \\| \\
+            \hspace{1cm}\verb| \\ x^2-6x+10 &  si & 2 < x < 5 \\|\\
+            \hspace{1cm}\verb| \\ 4x-15 &  si  & x \geq 5|\\
+            \hspace{0.5cm}\verb|\end{array}| \\
+            \hspace{0.5cm}\verb|\right|\\
+            \verb|\end{equation}|
+        \end{block}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+        \begin{exampleblock}{Resultado}
+            \begin{equation*}
+                f(x)= \left 
+                \{ \begin{array}{lcc}
+                    5 &   si  & x \leq 2 \\
+                    \\ x^2-6x+10 &  si & 2 < x < 5 \\
+                    \\ 4x-15 &  si  & x \geq 5
+                \end{array}
+                \right.
+            \end{equation*}
+        \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+
+\subsection{Entornos para teoremas y demostraciones.}
+\begin{frame}[fragile]{Entornos para teoremas y demostraciones}
+
+\begin{block}{Entorno Teorema Corolario, lema}
+
+    \begin{itemize}
+        \item \verb|\newtheorem{theorem}{Theorem}[section]|
+        \begin{itemize}
+            \item \verb|\theorem|. Es el entorno a iniciar.
+            \item \verb|\Theorem|. Nombre del entorno (se puede poner en español).
+            \item \verb|section| Para enumerar el teorema según la sección en que se esté posicionado.
+        \end{itemize}
+        \item \verb|\newtheorem{corollary}{Corollary}[theorem]|
+        \item \verb|\newtheorem{lemma}[theorem]{Lemma}|
+    \end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Teorema}
+¿Qué nos dice el teorema fundamental del cálculo? Se menciona a continuación: 
+
+\begin{theorem}
+    El teorema fundamental del cálculo consiste en dos puntos: 
+    \begin{enumerate}
+        \item Si f es continua en [a,b], entonces la función 
+        \begin{equation}
+            g(x)=\int_{a}^{x}f(t)dt
+        \end{equation} 
+         es derivable en [a,b] y g'(x)=f(x) para cada x en [a,b].
+        
+        \item Si f es continua en [a,b] y si g es una función tal que g'(x)=f(x) para todo x en [a,b], entonces
+        \begin{equation}
+            \int_{a}^{b}f(x)dx=g(b)-g(a).
+        \end{equation}
+   \end{enumerate} 
+\end{theorem}
+\end{frame}
+
+\subsubsection{Pero antes... tcolorbox}
+
+\begin{frame}[fragile]{Entorno colorbox}
+
+El entorno \verb|tcolorbox| permite crear cajas de texto con colores personalizados, sombras, bordes, opacidad entre otras características. El paquete asociado a este entorno es \verb|\usepackage{tcolorbox}|.
+
+\begin{alertblock}{Entorno tcolorbox}
+    El entorno se inicia de esta forma:
+    
+    \vspace{5mm}
+    \verb|\begin{tcolorbox}[color de fondo, color del marco, título]|
+    \vspace{5mm}
+
+    \hspace{5mm} TEXTO, TEOREMA.
+
+    \vspace{5mm}
+
+    \verb|\end{tcolorbox}|
+    
+\end{alertblock}
+\end{frame}
+
+
+\begin{frame}[fragile]{Color de fondo, color del marco y título}
+
+
+\begin{block}{Color de fondo y del marco}
+
+    \begin{itemize}
+        \item \verb|colframe=white|. Color del marco.
+        \item \verb|colback=yellow|. Color de fondo.
+        \item \verb|title=Título|. Título del teorema.
+    \end{itemize}
+    
+\end{block}
+
+
+\begin{alertblock}{Ejemplo}
+    Entonces el entorno puede definirse así:
+
+
+    \hspace{5mm} \verb|\begin{tcolorbox}[colframe=white, colback=yellow, title=Teorema]|.
+\end{alertblock}
+
+\end{frame}
+% Configuración de listings en el preámbulo
+%\section{Código Python}
+%\begin{frame}[fragile]{Posters}
+%\begin{lstlisting}[caption={Código Python}]
+
+%import pandas as pd
+%print("Impresion de una lista")
+%array=[1,2,3,4,5]
+%print(array)
+
+%print("Creacion de una serie")
+%miserie=pd.Series([10,11,12,13])
+%print(miserie)
+%print(miserie[1])
+
+%#series con cadenas
+
+%mistextos=pd.Series(["Miguel","Ivan","Daniel"])
+%print(mistextos)
+%\end{lstlisting}
+%\end{frame}
+
+
+
+
+\section{Código Python en \LaTeX}
+\begin{frame}[fragile]{Código Python}
+Para incluir código Python en Latex, se utiliza el paquete listings.
+
+    \begin{enumerate}
+        \item \verb|\usepackage{listings}| 
+        \item \verb|\renewcommand{\lstlistingname}{Código}|. Este comando se utiliza para cambiar el nombre del código (parecido a los pies de figura).
+    \end{enumerate}
+
+Se deben hacer configuraciones adicionales para que Latex identifique los comentarios, palabras reservadas y cadenas de texto. Esto se hace con el comando \verb|\lstset|, el cuál requiere de parámetros adicionales para visualizar el código.
+\end{frame}
+
+
+\begin{frame}[fragile]{Código Python}
+
+Los parámetros de \verb|\lstset| son:
+
+    \begin{enumerate} \pause
+        \item language=python. \textcolor{red}{Lenguaje de Programación.} \pause
+        \item \verb|basicstyle|=\verb|\normalsize|. \textcolor{red}{Tipo y tamaño de letra.} \pause
+        \item \verb|keywordstyle=\color{blue}|. \textcolor{red}{Resalta con color palabras reservadas de Python.} \pause
+        \item \verb|stringstyle=\color{red}|, \textcolor{red}{Añade color a las cadenas de texto.} \pause
+        \item \verb|commentstyle=\color{green}|. \textcolor{red}{Añade color a los comentarios.} \pause
+    \end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Código Python}
+
+Los parámetros de \verb|\lstset| son (continuación):
+
+    \begin{enumerate} \pause
+        \item \verb|showstringspaces=false|. \textcolor{red}{Evita colocar símbolos especiales entre espacios.} \pause
+        \item \verb|numbers=left|. \textcolor{red} {Número de línea de código. Se muestra a la izquierda.} \pause
+        \item \verb|breaklines=true|. \textcolor{red}{Mantiene el código dentro del marco (márgenes del documento).} \pause
+        \item \verb|frame=single|. \textcolor{red}{Dibuja un marco sencillo.} \pause
+        \item \verb|captionpos=b|. \textcolor{red}{Leyenda o 'pie de cuadro' en la parte de abajo.}
+    \end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Código Python}
+
+\begin{verbatim}
+\begin{lstlisting}[caption={Primer código en Python.}]
+		import pandas as pd
+		print("Impresion de una lista")
+		array=[1,2,3,4,5]
+		print(array)
+
+		#series con cadenas
+
+		mistextos=pd.Series(["Miguel","Ivan","Daniel"])
+		print(mistextos)    
+\end{lstlisting}
+\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Código Python}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=.525]{../../../../../Downloads/THC2026-1/codigopython2.png} 
+\end{figure}
+\end{frame}
+
+\end{document}
+
+
+
+
+
+

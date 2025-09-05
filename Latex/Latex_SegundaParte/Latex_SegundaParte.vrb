@@ -1,0 +1,15 @@
+\frametitle{Hyperlinks (hiperenlaces e hipervínculos)}
+
+\begin{block}{Hiperenlaces e hipervínculos}
+Este paquete mejora la navegación en el documento PDF. Convierte las referencias, citas, índices y tablas de contenido en enlaces interactivos para que el usuario los siga mediante un click.
+    \begin{itemize}
+    \item \verb|\usepackage{hyperref}|
+    \item \verb|\hypersetup{|
+            \verb|colorlinks=true,| \textcolor{red}{Activa el coloreado de enlaces}.\\
+            \verb|linkcolor=magenta,| \textcolor{red}{Resalta los enlaces internos (lista de figuras, tablas, etc.)}. \\
+            \verb|urlcolor=orange,| \textcolor{red}{Color de enlaces URL. Usar el comando} \verb|\href|. \\
+            \verb|citecolor=orange}| \textcolor{red}{Color de las citas.}
+        \item Para generar tablas utilice el \href{https://www.tablesgenerator.com/}{editor de tablas en Latex}.
+    \end{itemize}
+\end{block}
+

@@ -1,0 +1,17 @@
+\frametitle{Bibliografía Recomendada}
+\begin{block}{\LaTeX{}}
+    \begin{itemize}
+        \item Aranda, E. (2013). \textit{Curso de LaTeX}.
+        \item Mori, L. F. (2007). \textit{Writing a thesis with LaTeX}.
+        \item Oetiker, T. et al. (1995). \textit{La introducción no-tan-corta a LaTeX}.
+        \item Gutiérrez, M. (2011). \textit{Notas de Introducción a LaTeX}.
+    \end{itemize}
+\end{block}
+
+\begin{block}{Python}
+    \begin{itemize}
+        \item Guzdial, M., \& Ericson, B. (2016). \textit{Introduction to Computing and Programming in Python}. Pearson.
+        \item Langtangen, H. P. (2014). \textit{A Primer on Scientific Programming with Python}. Springer.
+        \item Punch, W. F., \& Enbody, R. (2010). \textit{The Practice of Computing Using Python}. Addison-Wesley.
+    \end{itemize}
+\end{block}

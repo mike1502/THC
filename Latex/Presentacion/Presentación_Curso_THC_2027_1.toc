@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Información del Curso}{3}{0}{1}
+\beamer@sectionintoc {2}{Evaluación}{8}{0}{2}
+\beamer@sectionintoc {3}{Reglas de Convivencia}{21}{0}{3}
+\beamer@sectionintoc {4}{Temario}{22}{0}{4}
+\beamer@sectionintoc {5}{Bibliografía}{25}{0}{5}
+\beamer@sectionintoc {6}{Recursos UNAM}{26}{0}{6}

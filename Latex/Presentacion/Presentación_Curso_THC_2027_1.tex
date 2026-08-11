@@ -1,0 +1,247 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% --- PAQUETES ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{animate}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage[all]{xy}
+\usepackage{transparent}
+\usepackage{eso-pic}
+
+% --- TEMAS Y ESTILOS PROFESIONALES ---
+\usetheme{Madrid}
+\usecolortheme{whale}   % Azul profundo elegante en encabezados
+\usecolortheme{rose}    % Fondos suavizados y elegantes para bloques
+\useinnertheme{rounded} % Esquinas redondeadas y sombras en bloques
+
+% Opciones visuales
+\setbeamertemplate{navigation symbols}{} % Oculta los botones de navegación innecesarios
+\setbeamercovered{transparent=30}         % Los elementos pausados se ven atenuados en lugar de invisibles
+
+% --- DATOS DE LA PRESENTACIÓN ---
+\title[Taller de Herramientas Computacionales]{\Large{\bf Taller de Herramientas Computacionales}}
+\subtitle{Grupo 60049 — Semestre 2027-1}
+
+\author[Profesor y Ayudante]{\Large{Miguel Ángel Carrillo Lucía}\and \Large{Karla Elsa Calva Cano}}
+
+\institute[UNAM - FC]{
+    \large{Universidad Nacional Autónoma de México}\\
+    \large{Facultad de Ciencias}\\
+    \large{Licenciatura en Matemáticas Aplicadas}
+}
+
+\date{12 de agosto de 2026}
+
+% --- FONDO CON ESCUDO (INTACTO) ---
+\setbeamertemplate{background}{
+  \rule{0pt}{.90\paperheight}%
+  \hspace*{.5\paperwidth}%
+  \paperwidth1.50mm
+  \makebox[1pt][c]{\transparent{0.120} \includegraphics[scale=0.56]{logos_unam_ciencias.png}}
+}
+
+\begin{document}
+
+% --- DIAPOSITIVA DE TÍTULO ---
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% --- AGENDA ---
+\begin{frame}{Agenda del Curso}
+    \tableofcontents[sectionstyle=show,subsectionstyle=show/shaded]
+\end{frame}
+
+% --- CLASE ---
+\section{Información del Curso}
+\begin{frame}{Información del Curso}
+    \vspace{2mm}
+    \begin{block}{Horario, salón de clase y contacto}
+    \begin{itemize}\justifying
+        \item \textbf{Horario:} Martes y Jueves de 7:00 am a 9:00 am (Grupo 6004). \pause
+        \item \textbf{Salón:} 303. Ubicación: Edificio Yelizcalli, Facultad de Ciencias, UNAM. \pause
+        \item \textbf{Asesorías remotas:} Programadas a convenir por plataforma o correo electrónico. \pause
+        \item \textbf{Asesorías presenciales:} Instituto de Ingeniería (Profesor titular) o Facultad de Ciencias (Profesor ayudante). \pause
+         \item Correo Profesor: miguelcarrillo15@ciencias.unam.mx
+         \item Correo Profesora: karla\_cano\_@ciencias.unam.mx
+        \item \textbf{Plataforma:} Google Classroom. \textit{Ingresar obligatoriamente con su correo de la Facultad.}
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+% --- EVALUACIÓN ---
+\section{Evaluación}
+\begin{frame}{Criterios de Evaluación}
+    \begin{block}{Desglose de Calificación}
+        \begin{itemize} \pause
+            \item \textbf{Proyectos (60\%):} Un proyecto por tema principal. \pause
+            \begin{enumerate} 
+                \item \textbf{\LaTeX{} (30\%):} Presentación en parejas o equipos de 3 (Temas asignados aleatoriamente. Fecha tentativa de exposición: 18 de septiembre). \pause
+                \item \textbf{Python (30\%):} Análisis de bases de datos (Fecha tentativa: 13 de noviembre). \pause
+            \end{enumerate}
+            \item \textbf{Tareas (30\%)} \pause
+            \item \textbf{Quizzes (10\%):} Un examen corto al finalizar cada tema. \pause
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Requisitos para Examen Final y Asistencia}
+        \begin{itemize} \justifying
+            \item \textbf{Asistencia obligatoria:} Más de 7 faltas injustificadas enviarán al alumno a examen final.
+            \item \textbf{Derecho a Final:} Se requiere haber entregado al menos el 70\% de las actividades académicas. La calificación final se promediará 50\% curso y 50\% examen final.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Lineamientos de Entregas}
+    \begin{block}{Entrega de Trabajos y Código}
+    \begin{itemize} \justifying
+        \item Habrá retos semanales y ejercicios al inicio de clase. \pause
+        \item \textbf{Calidad:} Se evalúa ortografía, gramática y documentación detallada en código. \pause
+        \item \textbf{\LaTeX{}:} Se adjuntan archivos comprimidos (\texttt{.zip}) y el documento compilado (\texttt{.pdf}). \pause
+        \item \textbf{Python:} Se adjuntan códigos y repositorios en GitHub (Crear cuenta). \pause
+        \item \textbf{Formato de archivo:} \texttt{THC\_NOMBRE\_TAREA1.zip} \pause
+        \item Entrega de calificaciones individual vía correo al finalizar el curso.
+    \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Honestidad Académica}
+        Trabajo en equipo no es igual a copiar. En caso de copia se asignará \textbf{calificación de cero}. En reincidencia la calificación final será \textbf{NP}.
+    \end{alertblock}
+\end{frame}
+
+% --- REGLAS ---
+\section{Reglas de Convivencia}
+\begin{frame}{Reglas de Convivencia y Ética}
+    \begin{block}{Trato Institucional}
+        \begin{itemize}
+            \item Respeto mutuo indispensable entre profesor, ayudante y estudiantes.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Código de Ética}
+        \begin{itemize}
+            \item Trabajo individual y en equipo con responsabilidad.
+            \item Explicar detalladamente todos los desarrollos (ecuaciones, programas, derivaciones).
+            \item Citar formalmente las fuentes consultadas para evitar el plagio.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+% --- TEMARIO ---
+\section{Temario}
+\begin{frame}{Contenido Sintético del Curso}
+\begin{block}{Introducción a \LaTeX{} y Python}
+    \begin{enumerate}
+        \item \textbf{Introducción al editor de textos en \LaTeX{}.} \pause
+        \item \textbf{Introducción a Python:}
+        \begin{itemize}
+            \item Uso de librerías científicas: NumPy, Matplotlib, Pandas, Seaborn.
+        \end{itemize} \pause
+        \item \textbf{Aplicaciones y Experimentación:}
+        \begin{itemize}
+            \item Mínimos cuadrados, método de Newton-Raphson, estadística de terremotos en México.
+            \item Predicción del precio del Bitcoin, Ley de Enfriamiento de Newton y simulaciones en física.
+        \end{itemize}
+    \end{enumerate}
+\end{block}
+\end{frame}
+
+% --- BIBLIOGRAFÍA ---
+\section{Bibliografía}
+
+\begin{frame}[fragile]{Bibliografía Recomendada}
+\begin{block}{\LaTeX{}}
+    \begin{itemize}
+        \item Aranda, E. (2013). \textit{Curso de LaTeX}.
+        \item Mori, L. F. (2007). \textit{Writing a thesis with LaTeX}.
+        \item Oetiker, T. et al. (1995). \textit{La introducción no-tan-corta a LaTeX}.
+        \item Gutiérrez, M. (2011). \textit{Notas de Introducción a LaTeX}.
+    \end{itemize}
+\end{block}
+
+\begin{block}{Python}
+    \begin{itemize}
+        \item Guzdial, M., \& Ericson, B. (2016). \textit{Introduction to Computing and Programming in Python}. Pearson.
+        \item Langtangen, H. P. (2014). \textit{A Primer on Scientific Programming with Python}. Springer.
+        \item Punch, W. F., \& Enbody, R. (2010). \textit{The Practice of Computing Using Python}. Addison-Wesley.
+    \end{itemize}
+\end{block}
+\end{frame}
+
+% --- SERVICIOS Y RECURSOS ---
+\section{Recursos UNAM}
+
+\begin{frame}{Primer Ingreso}
+
+\begin{center}
+\includegraphics[scale=.41]{../../../../../Pictures/Captura de pantalla 2026-07-27 111944.png} 
+
+\url{https://sites.google.com/ciencias.unam.mx/induccion/home}
+\end{center}
+\end{frame}
+
+\begin{frame}{Primer Ingreso}
+
+\begin{center}
+\includegraphics[scale=0.41]{../../../../../Downloads/Captura de pantalla 2026-07-27 115208_2.png} 
+
+\url{https://sites.google.com/ciencias.unam.mx/estuciencias}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Becas}
+
+\begin{center}
+\includegraphics[scale=.41]{../../../../../Downloads/Captura de pantalla 2026-07-27 115744_3.png} 
+
+\url{https://sites.google.com/ciencias.unam.mx/becas/abiertas}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}{Servicios para el Alumnado}
+    \begin{block}{Salud Mental y Física}
+    \begin{itemize}
+        \item \textbf{Centro Médico Universitario:} Optometría, dermatología, odontología, laboratorios.
+        \item \textbf{Atención Psicológica:} Servicio ESPORA y atención psiquiátrica.
+        \item \textbf{Deportes:} Gimnasios, alberca olímpica, tiro con arco, natación, esgrima, etc.
+    \end{itemize}
+    \end{block}
+
+    \begin{block}{Oferta Extracurricular y Cultural}
+    \begin{itemize}
+        \item \textbf{Idiomas (ENALLT):} Chino, alemán, árabe, inglés, entre otros.
+        \item \textbf{Cultura UNAM:} Conciertos sinfónicos, obras de teatro, cine y museos.
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Recursos de la Facultad de Ciencias}
+    \begin{block}{Préstamo de Equipo y Licencias}
+    \begin{itemize}
+        \item \textbf{Software Institucional:} MATLAB, Mathematica, Office 365, GitHub Student Pack.
+        \item \textbf{Infraestructura:} Megasala de Cómputo y préstamo de tablets.
+    \end{itemize}
+    \end{block}
+
+    \begin{block}{Actividades Culturales y Deportivas Internas}
+    \begin{itemize}
+        \item \textbf{Talleres:} Coro, guitarra, teatro, violín.
+        \item \textbf{Deportes FC:} Basquetbol, voleibol, fútbol, tochito y dodgeball.
+        \item \textbf{Clubes:} Juegos de mesa, cineclub, ajedrez.
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\end{document}
